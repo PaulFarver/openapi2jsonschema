@@ -94,7 +94,7 @@ def default(output, schema, prefix, stand_alone, expanded, kubernetes, strict):
                 # For Kubernetes, populate `apiVersion` and `kind` properties from `x-kubernetes-group-version-kind`
                 for type_name in definitions:
                     type_def = definitions[type_name]
-                    if "x-kubernetes-group-version-kind" in type_def:
+                    if "properties" in type_def and "x-kubernetes-group-version-kind" in type_def:
                         for kube_ext in type_def["x-kubernetes-group-version-kind"]:
                             if expanded and "apiVersion" in type_def["properties"]:
                                 api_version = (

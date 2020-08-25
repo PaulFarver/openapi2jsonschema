@@ -1,8 +1,8 @@
-FROM python:2-alpine
-MAINTAINER Gareth Rushgrove "gareth@morethanseven.net"
+FROM python:3-alpine
 
 COPY . /src
-RUN cd src && pip install -e .
+RUN apk add build-base ca-certificates openssl-dev libffi-dev
+RUN cd src && pip install .
 
 WORKDIR /out
 
